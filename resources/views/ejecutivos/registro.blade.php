@@ -7,13 +7,13 @@
 @section('contenido')
     <div class="row justify-content-center">
 
-        <form action="{{ route('registro-silla') }}" method="POST">
+        <form action="{{ route('registro-ejecutivo') }}" method="POST">
             @csrf
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Nombre:</strong>
-                        <input type="text" name="nombre" class="form-control" placeholder="Nombre del item" required>
+                        <input type="text" name="nombre" class="form-control" placeholder="Nombre del ejecutivo" required>
                         @if($errors->has('nombre'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('nombre') }}</strong>
@@ -24,12 +24,12 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Detalles:</strong>
-                        <textarea class="form-control" style="height:150px"  required
-                                  name="detalles" placeholder="Detalles"></textarea>
-                        @if($errors->has('detalles'))
+                        <strong>Identificacion:</strong>
+                        <input type="text" name="identificacion"
+                               class="form-control" placeholder="Identificacion del ejecutivo" required>
+                        @if($errors->has('identificacion'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('detalles') }}</strong>
+                                <strong>{{ $errors->first('identificacion') }}</strong>
                             </span>
                         @endif
                     </div>

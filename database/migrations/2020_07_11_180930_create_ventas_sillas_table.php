@@ -15,6 +15,10 @@ class CreateVentasSillasTable extends Migration
     {
         Schema::create('ventas_sillas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('venta_id');
+            $table->foreign('venta_id')->references('id')->on('ventas');
+            $table->unsignedInteger('silla_id');
+            $table->foreign('silla_id')->references('id')->on('sillas');
             $table->timestamps();
         });
     }

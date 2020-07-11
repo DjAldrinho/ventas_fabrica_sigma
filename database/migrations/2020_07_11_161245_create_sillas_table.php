@@ -15,6 +15,10 @@ class CreateSillasTable extends Migration
     {
         Schema::create('sillas', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre')->unique();
+            $table->text('detalles');
+            $table->integer('valor');
+            $table->char('estado');
             $table->timestamps();
         });
     }

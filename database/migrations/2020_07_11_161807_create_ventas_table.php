@@ -15,6 +15,9 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo');
+            $table->unsignedInteger('ejecutivo_id');
+            $table->foreign('ejecutivo_id')->references('id')->on('ejecutivos');
             $table->timestamps();
         });
     }

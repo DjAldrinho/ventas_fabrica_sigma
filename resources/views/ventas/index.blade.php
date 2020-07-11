@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('titulo_seccion')
-    Sillas
+    Ventas
 @endsection
 
 @section('contenido')
@@ -18,22 +18,20 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Detalles</th>
-                <th scope="col">Estado</th>
+                <th scope="col">Codigo</th>
+
+                <th scope="col">Ejecutivo</th>
                 <th scope="col">Creado</th>
-                <th scope="col">Actualizado</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($sillas as $key=>$silla)
+            @foreach($ventas as $key=>$venta)
                 <tr>
                     <td>{{$key}}</td>
-                    <td>{{$silla->nombre}}</td>
-                    <td>{{$silla->detalles}}</td>
-                    <td>{{$silla->estado}}</td>
-                    <td>{{$silla->created_at->diffForHumans()}}</td>
-                    <td>{{$silla->updated_at->diffForHumans()}}</td>
+                    <td>{{$venta->codigo}}</td>
+
+                    <td>{{$venta->ejecutivo->nombre}}</td>
+                    <td>{{$venta->created_at->diffForHumans()}}</td>
                 </tr>
             @endforeach
             </tbody>
@@ -46,7 +44,7 @@
         </div>
         <div class="col-4">
             <a class="btn btn-success btn-block"
-                href="{{route('registro-silla')}}">Registrar Silla</a>
+                href="{{route('registro-venta')}}">Registrar Venta</a>
         </div>
     </div>
 @endsection

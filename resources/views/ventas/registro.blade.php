@@ -7,16 +7,17 @@
 @section('contenido')
     <div class="row justify-content-center">
 
-        <form action="{{ route('registro-silla') }}" method="POST">
+        <form action="{{ route('registro-venta') }}" method="POST">
             @csrf
             <div class="row">
+
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Nombre:</strong>
-                        <input type="text" name="nombre" class="form-control" placeholder="Nombre del item" required>
-                        @if($errors->has('nombre'))
+                        <strong>Codigo:</strong>
+                        <input type="text" name="codigo" class="form-control" placeholder="Codigo" required>
+                        @if($errors->has('codigo'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('nombre') }}</strong>
+                                <strong>{{ $errors->first('codigo') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -24,12 +25,35 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Detalles:</strong>
-                        <textarea class="form-control" style="height:150px"  required
-                                  name="detalles" placeholder="Detalles"></textarea>
-                        @if($errors->has('detalles'))
+                        <strong>Ejecutivo:</strong>
+                        <select name="ejecutivo" id="ejecutivo" required class="form-control">
+                            <options value="">Seleccione una opcion</options>
+                            @foreach($ejecutivos as $ejecutivo)
+                                <option value="{{$ejecutivo->id}}">{{$ejecutivo->nombre}}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('ejecutivo'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('detalles') }}</strong>
+                                <strong>{{ $errors->first('ejecutivo') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Silla:</strong>
+                        <select name="silla[]" id="silla" required  class="form-control" multiple>
+                            <options value="">Seleccione una opcion</options>
+                            @foreach($sillas as $silla)
+                                <option value="{{$silla->id}}">{{$silla->nombre}}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('silla'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('silla') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -39,7 +63,7 @@
                 </div>
                 <div class="col-6 text-center">
                     <a class="btn btn-primary"
-                       href="{{route('listar-sillas')}}">Regresar</a>
+                       href="{{route('listar-ventas')}}">Regresar</a>
                 </div>
             </div>
         </form>

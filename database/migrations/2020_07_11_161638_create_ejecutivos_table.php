@@ -15,6 +15,9 @@ class CreateEjecutivosTable extends Migration
     {
         Schema::create('ejecutivos', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('identificacion');
+            $table->char('estado');
             $table->timestamps();
         });
     }

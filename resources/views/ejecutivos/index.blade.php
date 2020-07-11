@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('titulo_seccion')
-    Sillas
+    Ejecutivos
 @endsection
 
 @section('contenido')
@@ -19,21 +19,21 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Detalles</th>
+                <th scope="col">Identificacion</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Creado</th>
                 <th scope="col">Actualizado</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($sillas as $key=>$silla)
+            @foreach($ejecutivos as $key=>$ejecutivo)
                 <tr>
                     <td>{{$key}}</td>
-                    <td>{{$silla->nombre}}</td>
-                    <td>{{$silla->detalles}}</td>
-                    <td>{{$silla->estado}}</td>
-                    <td>{{$silla->created_at->diffForHumans()}}</td>
-                    <td>{{$silla->updated_at->diffForHumans()}}</td>
+                    <td>{{$ejecutivo->nombre}}</td>
+                    <td>{{$ejecutivo->identificacion}}</td>
+                    <td>{{$ejecutivo->estado}}</td>
+                    <td>{{$ejecutivo->created_at->diffForHumans()}}</td>
+                    <td>{{$ejecutivo->updated_at->diffForHumans()}}</td>
                 </tr>
             @endforeach
             </tbody>
@@ -46,7 +46,7 @@
         </div>
         <div class="col-4">
             <a class="btn btn-success btn-block"
-                href="{{route('registro-silla')}}">Registrar Silla</a>
+                href="{{route('registro-ejecutivo')}}">Registrar ejecutivo</a>
         </div>
     </div>
 @endsection

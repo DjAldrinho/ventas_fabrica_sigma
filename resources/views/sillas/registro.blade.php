@@ -5,34 +5,55 @@
 @endsection
 
 @section('contenido')
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Detalles</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Creado</th>
-            <th scope="col">Actualizado</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($sillas as $key=>$silla)
-            <tr>
-                <td>{{$key}}</td>
-                <td>{{$silla->nombre}}</td>
-                <td>{{$silla->detalles}}</td>
-                <td>{{$silla->estado}}</td>
-                <td>{{$aula->created_at->diffForHumans()}}</td>
-                <td>{{$aula->updated_at->diffForHumans()}}</td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
     <div class="row justify-content-center">
-        <div class="col-3">
-            <a class="btn btn-success btn-block"
-                href="{{route('registro-silla')}}">Registrar Silla</a>
-        </div>
+
+        <form action="{{ route('registro-silla') }}" method="POST">
+            @csrf
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Nombre:</strong>
+                        <input type="text" name="nombre" class="form-control" placeholder="Nombre del item" required>
+                        @if($errors->has('nombre'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('nombre') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Valor:</strong>
+                        <input type="number" name="valor" class="form-control" placeholder="Valor" required>
+                        @if($errors->has('valor'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('valor') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Detalles:</strong>
+                        <textarea class="form-control" style="height:150px"  required
+                                  name="detalles" placeholder="Detalles"></textarea>
+                        @if($errors->has('detalles'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('detalles') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-6 text-center">
+                    <button type="submit" class="btn btn-success">Enviar</button>
+                </div>
+                <div class="col-6 text-center">
+                    <a class="btn btn-primary"
+                       href="{{route('listar-sillas')}}">Regresar</a>
+                </div>
+            </div>
+        </form>
     </div>
 @endsection
